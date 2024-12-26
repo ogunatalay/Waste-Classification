@@ -1,57 +1,75 @@
-# Waste-Classification
-Materyal Tahmini Projesi: Genel Bakış
-🎯 Projenin Amacı:
-Bu proje, makine öğrenmesi ve derin öğrenme teknikleri kullanarak atık materyallerin (çöp) türlerini görüntü verileri üzerinden sınıflandırmayı amaçlamaktadır. Özellikle geri dönüşüm ve çevre koruma projelerinde kullanılmak üzere geliştirilen bu sistem, bir atık materyalin plastik, cam, kağıt, karton, metal veya genel çöp olup olmadığını tespit eder.
+📊 Atık Materyal Sınıflandırma ve Karbon Ayak İzi Tahmini Projesi
 
-📁 1. Veri Seti:
-Veri Seti Yapısı:
-Train: Modelin eğitilmesi için kullanılır.
-Test: Modelin performansının ölçülmesi için kullanılır.
+🎯 Projenin Amacı
+Bu projede, atık materyallerin görüntü verileri kullanılarak sınıflandırılması ve malzemelerin çevresel etkilerinin (karbon ayak izi) analiz edilmesi amaçlanmıştır. Proje, makine öğrenmesi (Random Forest, Decision Tree, SVM) ve derin öğrenme (MobileNet ve özel CNN katmanları) teknikleri kullanılarak gerçekleştirilmiştir.
+
+📁 Veri Seti Yapısı ve Hazırlığı
+Veri Kaynağı: Google Drive üzerinden erişilen split-garbage-dataset.
+Klasör Yapısı:
+Train: Modelin öğrenmesi için kullanılan veri seti.
+Test: Modelin performansını değerlendirmek için kullanılan veri seti.
 Kategoriler:
-Cardboard (Karton)
-Glass (Cam)
-Metal
-Paper (Kağıt)
-Plastic (Plastik)
-Trash (Çöp)
-Her kategori, ilgili materyale ait görüntüleri içermektedir.
-
-🧠 2. Kullanılan Modeller:
-1. CNN (Convolutional Neural Network):
-Amaç: Görüntülerin doğrudan özelliklerini çıkararak sınıflandırma yapmak.
-Katmanlar:
-Conv2D ve MaxPooling2D: Görüntüdeki özellikleri algılamak.
-Flatten ve Dense: Özellikleri sınıflandırmak.
-Dropout: Aşırı öğrenmeyi (overfitting) önlemek.
-2. MobileNet (Transfer Learning):
-Amaç: Önceden eğitilmiş bir modelin bilgi birikimini kullanarak daha hızlı ve doğru tahmin yapmak.
-Yöntem: MobileNet'in alt katmanları donduruldu, sadece yeni eklenen katmanlar eğitildi.
-✅ Avantaj: İki modelin bir arada kullanılması esneklik ve performans açısından etkili bir yöntem oluşturdu.
-
-📈 3. Model Performansı:
-Genel Doğruluk: %78
-Eğitim ve Doğrulama Doğruluğu:
-Eğitim doğruluğu %40'tan %76'ya yükseldi.
-Doğrulama doğruluğu %65'ten %78'e çıktı.
-Eğitim ve Doğrulama Kaybı:
-Eğitim kaybı: 1.999 → 0.698
-Doğrulama kaybı: 0.967 → 0.695
-✅ Sonuç: Model, eğitim ve doğrulama veri setlerinde istikrarlı bir öğrenme gerçekleştirdi ve aşırı öğrenme (overfitting) göstermedi.
-
-🔍 4. Modelin Tahminleri:
-Model, aşağıdaki materyalleri başarılı bir şekilde tespit etti:
-
-Kağıt
 Plastik
 Metal
+Kağıt
 Karton
-Çöp
 Cam
-🌍 5. Uygulama Alanları:
-Akıllı geri dönüşüm sistemleri
-Atık yönetimi ve çevre koruma projeleri
-Endüstriyel atık ayrıştırma tesisleri
-📝 6. Sonuç:
-Bu proje, görüntü tabanlı atık materyal sınıflandırma için etkili bir çözüm sunmaktadır. CNN ve MobileNet modellerinin kombinasyonu, hem eğitim sürecini hızlandırmış hem de model doğruluğunu artırmıştır.
+Çöp
 
-Eğer daha fazla ayrıntı istersen veya teknik detayları incelemek istersen, sorabilirsin!
+Görüntü İşleme:
+Görseller yeniden boyutlandırıldı (224x224) ve normalize edildi.
+Veri artırma teknikleri uygulandı (döndürme, kaydırma, yakınlaştırma vb.).
+
+
+🧠 Derin Öğrenme Modelleri
+a. MobileNet (Transfer Learning)
+Temel Model: MobileNet, önceden eğitilmiş bir ağdır ve imagenet ağırlıkları kullanıldı.
+Yapı:
+Alt katmanlar donduruldu ve yeniden eğitilmedi.
+Üzerine özel CNN katmanları eklendi.
+Çıktı katmanı, sınıf sayısına göre (softmax) oluşturuldu.
+
+Eğitim: Model, eğitim veri seti ile eğitildi ve doğrulama veri setiyle değerlendirildi.
+
+Performans Metriği:
+Eğitim doğruluğu ve kaybı gözlemlendi.
+Test doğruluğu: %78
+
+
+🤖 Makine Öğrenmesi Modelleri
+MobileNet özellikleri çıkarılarak aşağıdaki klasik makine öğrenmesi modelleriyle sınıflandırma yapıldı:
+
+a. Random Forest (Rastgele Ormanlar)
+Amaç: Görüntü özelliklerinden sınıflandırma yapmak.
+Performans Metriği: Accuracy, Precision, Recall, F1 Score hesaplandı.
+b. Decision Tree (Karar Ağaçları)
+Amaç: Görüntü özelliklerini ağaç yapısı üzerinden analiz ederek sınıflandırma yapmak.
+Performans Metriği: Accuracy, Precision, Recall, F1 Score hesaplandı.
+c. SVM (Destek Vektör Makineleri)
+Amaç: Özellik uzayında en iyi sınıflandırma sınırını belirlemek.
+Performans Metriği: Accuracy, Precision, Recall, F1 Score hesaplandı.
+Sonuç: Makine öğrenmesi modelleri üzerinde değerlendirme yapılarak en iyi performans gösteren model belirlendi.
+
+Görselleştirmeler
+a. Eğitim ve Test Doğruluğu/Kaybı Grafikleri
+Eğitim sürecinde doğruluk ve kayıp metriklerinin değişimi grafiklerle analiz edildi.
+b. Karbon Ayak İzi Analizi
+Materyallerin karbon ayak izi katkıları görselleştirildi.
+Plastik en yüksek karbon ayak izine, çöp ise en düşük karbon ayak izine sahip olarak belirlendi.
+c. Scatter Plot ile Malzeme Türleri ve Karbon Ayak İzi Katkısı
+Malzeme türleri ve karbon ayak izi katkıları arasında bir scatter plot oluşturuldu.
+
+📸 Görsel Tahmin Örneği
+Kullanıcı tarafından sağlanan görüntüler modele verilerek tahmin yapıldı.
+Örneğin bir plastik atığın doğru sınıflandırıldığı gözlemlendi.
+
+🌍 Uygulama Alanları
+Akıllı Atık Yönetim Sistemleri: Otomatik atık sınıflandırma cihazları.
+Çevre Koruma Projeleri: Geri dönüşüm süreçlerinin iyileştirilmesi.
+Endüstriyel Kullanım: Atık yönetim tesislerinde hızlı ayrıştırma.
+
+
+📝 Sonuç
+MobileNet tabanlı transfer öğrenme modeli ve makine öğrenmesi algoritmaları başarılı bir şekilde kullanıldı.
+Random Forest modeli, en yüksek başarı oranını gösterdi.
+Proje, atık yönetimi ve geri dönüşüm sistemlerinde pratik ve etkili bir çözüm sunmaktadır.
