@@ -74,5 +74,5 @@ Endüstriyel Kullanım: Atık yönetim tesislerinde hızlı ayrıştırma.<br>
 
 📝 Sonuç<br>
 MobileNet tabanlı transfer öğrenme modeli ve makine öğrenmesi algoritmaları başarılı bir şekilde kullanıldı.<br>
-Random Forest modeli, en yüksek başarı oranını gösterdi.<br>
+Random Forest modeli, klasik modeller arasında en yüksek başarı oranını gösterdi.<br>
 Proje, atık yönetimi ve geri dönüşüm sistemlerinde pratik ve etkili bir çözüm sunmaktadır.<br>
