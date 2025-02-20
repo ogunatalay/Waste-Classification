@@ -1,5 +1,5 @@
 📊 **Atık Materyal Sınıflandırma ve Karbon Ayak İzi Tahmini Projesi** <br>
-**ogun.atalay33@gmail.com**
+**ogun.atalay33@gmail.com** <br>
 🎯 **Projenin Amacı** <br>
 Bu projede, atık materyallerin görüntü verileri kullanılarak sınıflandırılması ve malzemelerin çevresel etkilerinin (karbon ayak izi) analiz edilmesi amaçlanmıştır. Proje, makine öğrenmesi (Random Forest, Decision Tree, SVM) ve derin öğrenme (MobileNet ve özel CNN katmanları) teknikleri kullanılarak gerçekleştirilmiştir.
 
